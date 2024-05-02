@@ -91,6 +91,9 @@ def genetic_algorithm(cost_matrix, population_size, supply, demand, time, genera
             best_solution = population[np.argmin(fitnesses)]
     return best_solution, best_fitness
 
+"""
+Где-то тут внизу есть ошибка с скроллом, не скроллится матрица если большая :/
+"""
 class TriaxialTransportationProblem:
     def __init__(self, root):
         self.root = root
@@ -153,6 +156,8 @@ class TriaxialTransportationProblem:
 
         Button(self.root, text="Run Genetic Algorithm", command=self.run_genetic_algorithm).grid(row=5, column=0, columnspan=2)
 
+"""
+Вот здесь не пропускает почему-то дальше в матрицу c[ijk], хотя должен, говорит что пустые значения. Единственное где получает значение это cost matrix.
     def run_genetic_algorithm(self):
         try:
             a = np.array([[float(entry.get()) for entry in row] for row in self.entries['a']])
@@ -165,6 +170,7 @@ class TriaxialTransportationProblem:
             messagebox.showinfo("Result", f"Best solution:\n{np.array_str(best_solution)}\n\nCost: {best_fitness}")
         except ValueError as e:
             messagebox.showerror("Input Error", str(e))
+"""
 
 if __name__ == "__main__":
     root = tk.Tk()
